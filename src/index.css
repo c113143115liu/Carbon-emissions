@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 碳排放計算器設計系統 - 環保綠 + 科技藍 */
+
+@layer base {
+  :root {
+    /* 主色調 - 環保綠 */
+    --primary: 107 52% 68%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* 次色調 - 科技藍/青 */
+    --secondary: 180 100% 34%;
+    --secondary-foreground: 0 0% 100%;
+    
+    /* 背景色 */
+    --background: 210 25% 97%;
+    --foreground: 200 18% 26%;
+
+    /* 卡片 */
+    --card: 0 0% 100%;
+    --card-foreground: 200 18% 26%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 18% 26%;
+
+    /* 成功/正確 */
+    --success: 145 100% 39%;
+    --success-foreground: 0 0% 100%;
+    
+    /* 錯誤/危險 */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* 警告 */
+    --warning: 36 100% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Muted 色調 */
+    --muted: 210 20% 96%;
+    --muted-foreground: 200 10% 45%;
+
+    /* Accent */
+    --accent: 180 100% 34%;
+    --accent-foreground: 0 0% 100%;
+
+    /* 邊框和輸入 */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 180 100% 34%;
+
+    --radius: 0.75rem;
+
+    /* 自定義漸層和陰影 */
+    --gradient-primary: linear-gradient(135deg, hsl(107, 52%, 68%) 0%, hsl(145, 63%, 42%) 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(180, 100%, 34%) 0%, hsl(195, 80%, 40%) 100%);
+    --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+    
+    /* 標籤頁 inactive */
+    --tab-inactive: 0 0% 94%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 200 25% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 200 20% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 200 20% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 107 52% 60%;
+    --primary-foreground: 200 25% 8%;
+
+    --secondary: 180 80% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 200 20% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 180 80% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 145 80% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 200 20% 20%;
+    --input: 200 20% 20%;
+    --ring: 180 80% 45%;
+
+    --tab-inactive: 200 20% 15%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, "Microsoft JhengHei";
+  }
+}
+
+@layer components {
+  /* 主按鈕 - 環保綠漸層 */
+  .btn-primary-gradient {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-bold text-white transition-all duration-300;
+    background: var(--gradient-primary);
+    box-shadow: 0 4px 15px rgba(149, 208, 139, 0.4);
+  }
+
+  .btn-primary-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(149, 208, 139, 0.5);
+  }
+
+  .btn-primary-gradient:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+
+  /* 次按鈕 - 科技藍 */
+  .btn-secondary-gradient {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-bold text-white transition-all duration-300;
+    background: var(--gradient-secondary);
+    box-shadow: 0 4px 15px rgba(0, 174, 174, 0.3);
+  }
+
+  .btn-secondary-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 174, 174, 0.4);
+  }
+
+  /* 卡片樣式 */
+  .card-eco {
+    @apply rounded-xl bg-card p-6 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-eco:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* 標籤頁按鈕 */
+  .tab-btn {
+    @apply px-5 py-3 font-medium transition-all duration-300 border-b-3 border-transparent;
+  }
+
+  .tab-btn.active {
+    @apply text-secondary border-secondary font-bold;
+  }
+
+  /* 問題回饋樣式 */
+  .quiz-option-correct {
+    @apply bg-success/10 border-l-4 border-success;
+  }
+
+  .quiz-option-wrong {
+    @apply bg-destructive/10 border-l-4 border-destructive;
+  }
+
+  /* 詳解區塊 */
+  .explanation-box {
+    @apply mt-4 p-4 rounded-lg border-l-4 border-warning bg-warning/10;
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  /* 結算區塊 */
+  .tally-section {
+    @apply bg-success/10 p-6 rounded-xl border-2 border-primary;
+  }
+
+  /* 輸入群組 */
+  .input-eco {
+    @apply flex items-center justify-between gap-4 p-4 rounded-lg bg-muted border border-border transition-all;
+  }
+
+  .input-eco:focus-within {
+    @apply border-secondary ring-2 ring-secondary/20;
+  }
+
+  /* 導覽項目 */
+  .nav-eco {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+  }
+
+  .nav-eco:hover {
+    @apply bg-muted;
+  }
+
+  .nav-eco.active {
+    @apply bg-primary text-primary-foreground font-bold;
+  }
+
+  /* 登入卡片 */
+  .login-card {
+    @apply w-full max-w-md p-8 rounded-2xl bg-card;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  /* 區塊標題 */
+  .section-title {
+    @apply text-2xl font-bold text-secondary border-b-2 border-muted pb-3 mb-6;
+  }
+
+  /* Highlight 項目 */
+  .highlight-item {
+    @apply border-l-4 border-warning bg-warning/5;
+  }
+}
+
+@layer utilities {
+  /* 動畫 */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  @keyframes pulse-soft {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.8;
+    }
+  }
+
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+}
